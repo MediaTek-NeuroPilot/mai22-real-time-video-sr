@@ -1,0 +1,42 @@
+log_dir: snapshot
+
+dataset:
+    dataloader_settings:
+        train:
+            batch_size: 4
+            drop_remainder: True
+            shuffle: True
+            num_parallel_calls: 6
+        val:
+            batch_size: 1
+    data_dir: data/REDS/
+    degradation: sharp_bicubic
+    train_frame_num: 10
+    test_frame_num: 99
+    crop_size: 64
+
+model:
+    path: model/mobile_rrn.py
+    name: MobileRRN
+
+learner:
+    general:
+        total_steps: 1500000
+        log_train_info_steps: 100
+        keep_ckpt_steps: 10000
+        valid_steps: 100000
+
+    optimizer:
+        name: Adam
+        beta_1: 0.9
+        beta_2: 0.999
+
+    lr_scheduler:
+        name: ExponentialDecay
+        initial_learning_rate: 0.0001
+        decay_steps: 1000000
+        decay_rate: 0.1
+        staircase: True
+
+    saver:
+        restore_ckpt: null

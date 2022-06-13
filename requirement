@@ -1,0 +1,4 @@
+pyyaml
+numpy
+imageio
+tensorflow >= 2.8.0
