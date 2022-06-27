@@ -34,8 +34,15 @@ class REDS():
         │   │        ├── 00000000.png
         │   │        ├── ...
         │   │        └── 00000099.png
-        │   ├── train_blur/
+        |   ├── train_blur/
         │   ├── train_sharp_bicubic/
+        │   │   └── X4/
+        │   │       ├── 000/
+        |   │       ├── ...
+        │   │       └── 239/
+        │   │           ├── 00000000.png
+        │   │           ├── ...
+        │   │           └── 00000099.png
         │   └── train_blur_bicubic/
         └── val/
             ├── val_sharp/
@@ -47,7 +54,14 @@ class REDS():
             │        └── 00000099.png
             ├── val_blur/
             ├── val_sharp_bicubic/
-            └── val_blur_bicubic/
+            │   └── X4/
+            │       ├── 000/
+            │       ├── ...
+            │       └── 239/
+            │           ├── 00000000.png
+            │           ├── ...
+            │           └── 00000099.png
+            └── train_blur_bicubic/
         (all sub-dir structure is similar)
 
     Attributes:
@@ -70,12 +84,8 @@ class REDS():
             dataset_config = {
                 'data_dir': '/path/to/reds/',
                 'degradation': 'sharp_bicubic',
-                'train_frame_num': 1,
-                'test_frame_num': 1,
-                'image_mean': 0,
-                'image_std': 255,
-                'label_mean': 0,
-                'label_std': 255,
+                'train_frame_num': 10,
+                'test_frame_num': 100,
                 'crop_size': 224
             }
             data_dir: A `str` represents the directory of REDS dataset.
@@ -118,6 +128,8 @@ class REDS():
 
         # parse all data files
         image_dir = data_dir / split / f'{split}_{degradation}'
+        if 'bicubic' in degradation:
+            image_dir = image_dir / 'X4'
         label_dir = data_dir / split / f'{split}_sharp'
         filenames = sorted(image_dir.glob('**/*.png'))
 

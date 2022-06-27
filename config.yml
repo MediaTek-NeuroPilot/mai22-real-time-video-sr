@@ -12,7 +12,7 @@ dataset:
     data_dir: data/REDS/
     degradation: sharp_bicubic
     train_frame_num: 10
-    test_frame_num: 99
+    test_frame_num: 100
     crop_size: 64
 
 model:

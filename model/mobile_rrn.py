@@ -28,7 +28,7 @@ class MobileRRN(tf.keras.Model):
         out_channels = 3
         block_num = 5  # the number of residual block in RNN cell
 
-        self.base_channels = 64
+        self.base_channels = 16
         self.scale = 4
 
         # first conv

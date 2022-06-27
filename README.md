@@ -67,7 +67,7 @@ dataset:
     data_dir: data/ -> The directory of REDS dataset.
     degradation: sharp_bicubic -> The degradation of images.
     train_frame_num: 10 -> The number of image frame(s) for per training step.
-    test_frame_num: 99 -> The number of image frame(s) for per testing step.
+    test_frame_num: 100 -> The number of image frame(s) for per testing step.
     crop_size: 64 -> The height and width of cropped patch.
 
 model:

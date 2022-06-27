@@ -252,6 +252,7 @@ class StandardLearner():
     def test(self):
         """Evaluate the model."""
         self.register_evaluation()
+        self.summary = tf.summary.create_file_writer(self.log_dir)
 
         # restore checkpoint
         logger.info(f'Restore from {self.saver.restore_ckpt}')
