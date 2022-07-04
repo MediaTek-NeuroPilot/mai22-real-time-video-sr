@@ -11,10 +11,11 @@ This repository provides the implementation of the baseline model, **Mobile RRN*
 - [Overview](#overview)
 - [Requirements](#requirements)
 - [Dataset preparation](#dataset-preparation)
-- [Training and testing](#training-and-testing)
+- [Training and validation](#training-and-testing)
   - [Configuration](#configuration)
   - [Training](#training)
-  - [Testing](#testing)
+  - [Validation](#validation)
+- [Testing](#testing)
 - [Convert to tflite](#convert-to-tflite)
 - [TFLite inference on mobile](#tflite-inference-on-mobile)
 - [Folder structure](#folder-structure)
@@ -46,7 +47,7 @@ This repository provides the implementation of the baseline model, **Mobile RRN*
 
 ---
 
-### Training and Testing
+### Training and Validation
 
 #### Configuration
 
@@ -112,15 +113,35 @@ The main arguments are as follows:
 
 After training, the checkpoints will be produced in `log_dir`.
 
-#### Testing
+#### Validation
 
-To test the model, use the following command:
+To valid the model, use the following command:
 
 ```bash
 python run.py --process test --config_path config.yml
 ```
 
 After testing, the output images will be produced in `log_dir/output`.
+
+[[back]](#contents)
+
+---
+
+### Testing
+
+To generate testing outputs, use the following command:
+
+```bash
+python generate_output.py --model_path model/mobile_rrn.py --model_name MobileRRN --ckpt_path snapshot/ckpt-* --data_dir=REDS/test/test_sharp_bicubic/X4/ --output_dir=results
+```
+
+The main arguments are as follows:
+
+>```model_path``` : &nbsp; Path of model file.<br/>
+>```model_name``` : &nbsp; Name of model class.<br/>
+>```ckpt_path``` : &nbsp; Path of checkpoint.<br/>
+>```data_dir``` : &nbsp; Directory of testing frames in REDS dataset.<br/>
+>```output_dir``` : &nbsp; Directory for saving output images.<br/>
 
 [[back]](#contents)
 

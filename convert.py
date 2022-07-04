@@ -9,7 +9,7 @@ from util import plugin
 
 def _parse_argument():
     """Return arguments for conversion."""
-    parser = argparse.ArgumentParser(description='Codebase for vision experiments.')
+    parser = argparse.ArgumentParser(description='Conversion.')
     parser.add_argument('--model_path', help='Path of model file.', type=str, required=True)
     parser.add_argument('--model_name', help='Name of model class.', type=str, required=True)
     parser.add_argument(

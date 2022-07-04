@@ -57,11 +57,11 @@ class REDS():
             │   └── X4/
             │       ├── 000/
             │       ├── ...
-            │       └── 239/
+            │       └── 029/
             │           ├── 00000000.png
             │           ├── ...
             │           └── 00000099.png
-            └── train_blur_bicubic/
+            └── val_blur_bicubic/
         (all sub-dir structure is similar)
 
     Attributes:
