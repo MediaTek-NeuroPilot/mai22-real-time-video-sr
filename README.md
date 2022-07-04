@@ -30,7 +30,7 @@ This repository provides the implementation of the baseline model, **Mobile RRN*
 - Python: 3.6, 3.7
 - Python packages: numpy, imageio and pyyaml 
 - [TensorFlow >= 2.6.0](https://www.tensorflow.org/install/) + [CUDA cuDNN](https://developer.nvidia.com/cudnn)
-- GPU for training (e.g., Nvidia GeForce GTX 2080)
+- GPU for training (e.g., Nvidia GeForce RTX 3090)
 
 [[back]](#contents)
 
@@ -132,7 +132,7 @@ After testing, the output images will be produced in `log_dir/output`.
 To generate testing outputs, use the following command:
 
 ```bash
-python generate_output.py --model_path model/mobile_rrn.py --model_name MobileRRN --ckpt_path snapshot/ckpt-* --data_dir=REDS/test/test_sharp_bicubic/X4/ --output_dir=results
+python generate_output.py --model_path model/mobile_rrn.py --model_name MobileRRN --ckpt_path snapshot/ckpt-* --data_dir REDS/test/test_sharp_bicubic/X4/ --output_dir results
 ```
 
 The main arguments are as follows:
@@ -152,7 +152,7 @@ The main arguments are as follows:
 To convert the keras model to tflite, use the following command:
 
 ```bash
-python convert.py --model_path model/mobile_rrn.py --model_name MobileRRN --input_shapes 1,320,180,6:1,320,180,64 --ckpt_path snapshot/ckpt-* --output_tflite model.tflite
+python convert.py --model_path model/mobile_rrn.py --model_name MobileRRN --input_shapes 1,320,180,6:1,320,180,16 --ckpt_path snapshot/mobile_rrn_16/ckpt-* --output_tflite model.tflite
 ```
 
 The main arguments are as follows:
